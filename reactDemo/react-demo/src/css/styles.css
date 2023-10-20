@@ -1,0 +1,694 @@
+.bg-color-navbar-green{
+
+}
+html,body{
+    height:100%;
+}
+
+.hwfa{
+    height: -webkit-fill-available;
+}
+.wwfa{
+    width: -webkit-fill-available;
+}
+.w-inherit{
+    width:inherit;
+}
+.w-30px{
+    width: 30px;
+}
+.contentCenter{
+    display:flex;
+    justify-content: center;
+}
+.cursorPointer{
+    cursor: pointer;
+}
+.m-l-auto{
+    margin-left:auto;
+}
+.m-r-25px{
+    margin-right: 25px;
+}
+.p-l-5px{
+    padding-left: 5px;
+}
+.p-r-10px{
+    padding-right: 10px;
+}
+.p-r-25px{
+    padding-right: 25px;
+}
+.p-l-25px{
+    padding-left: 25px;
+}
+.right0{
+    right:0;
+}
+.rotate{
+    transition: width 2s, height 2s, transform 1s;
+}
+/*.rotate:hover{*/
+
+/*    -webkit-transform: rotateZ(20deg);*/
+/*    -moz-transform: rotateZ(20deg);*/
+/*    transform: rotateZ(20deg);*/
+
+/*}*/
+.mirror-image{
+    transition: width 2s, height 2s, transform 0.5s;
+}
+/*.mirror-image:hover {*/
+/*    -webkit-transform: scaleX(-1);*/
+/*    transform: scaleX(-1);*/
+/*}*/
+.display-grid{
+    display: grid;
+}
+.b-r-5px{
+    border: none;
+    border-radius: 5px;
+}
+.p-2-rem{
+    padding: 2rem!important;
+}
+.p-3-px{
+    padding:3px;
+}
+.margin-top-a{
+    margin-top: auto;
+}
+.margin-bot-a{
+    margin-bottom: auto;
+}
+/*-------------------------------------------------------*/
+/*LOGIN*/
+.loginBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2;
+}
+.login-container {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    height: 50%;
+    width: 50%;
+}
+.loginButton{
+    background-color: white;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: xx-large;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+input[type="text"],
+input[type="password"],
+input[type="checkbox"] {
+
+    /*width: 100%;*/
+    padding: 8px;
+    font-size: xx-large;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    /*margin: 10px;*/
+    font-family: math;
+    margin-right: auto;
+}
+input#searchQueryInput{
+    text-align: left;
+}
+.rememberMe-container{
+    display: flex;
+    flex-direction: row;
+}
+#rememberMe-txt{
+    font-size: x-large;
+    text-align: center;
+    padding: 8px;
+    margin-left: auto;
+}
+
+/*-------------------------------------------------------*/
+/*search bar top nav*/
+.wrapper {
+    width: 100%;
+    max-width: 31.25rem;
+    margin: 6rem auto;
+}
+
+.label {
+    font-size: .625rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: +1.3px;
+    margin-bottom: 1rem;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 35%;
+    height:inherit;
+    padding-left: 50px;
+}
+
+#searchQueryInput {
+    width: 100%;
+    height: 2.2rem;
+    background: #f5f5f5;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+}
+
+#searchQuerySubmit {
+    width: 3.5rem;
+    height: 2.8rem;
+    margin-left: -3.5rem;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#searchQuerySubmit:hover {
+    cursor: pointer;
+}
+.g-r-g-20px{
+    grid-row-gap: 20px;
+}
+.h-inherit{
+    height:inherit;
+}
+.searchResult {
+    display: flex;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.searchResultImage {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.searchResultInfo {
+    flex: 1;
+}
+/*-------------------------------------------------------*/
+.rightB{
+
+}
+.rightB:after{
+    content: "";
+    background: #d2d2d7;
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+    height: 65%;
+    width: 1px;
+}
+.leftB{
+
+}
+.leftB:after{
+    content: "";
+    background: #d2d2d7;
+    position: absolute;
+    bottom: 18%;
+    left: 0;
+    height: 65%;
+    width: 1px;
+}
+.topNavBarHP{
+
+}
+.smallBoxTop{
+    width: 280px;
+    height: -webkit-fill-available;
+    /*background-color: black;*/
+    position: absolute;
+    padding:10px;
+    display: flex;
+}
+.smallBoxTop:after{
+    content: "";
+    background: #adb5bd;
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+    height: 65%;
+    width: 1px;
+}
+.bigBoxTop{
+    height: 65px;
+    width: -webkit-fill-available;
+    /*background-color: red;*/
+    margin-left: 280px;
+    margin-right: 280px;
+}
+.sideNavBarHP{
+    position: absolute;
+    height: -webkit-fill-available;
+    width: 280px;
+    background-color: #f3f3f3!important;
+}
+.contentDiv{
+    position: absolute;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    margin-left:280px;
+    margin-right: 280px;
+    background-color: #f3f3f3!important;
+}
+.rAdded, .yourLibraries{
+    height: 65px;
+}
+.rAddedtxt, .yourLibrariestxt{
+    padding-left: 25px;
+    font-size: xx-large;
+    margin-top: 15px;
+    margin-left: 15px;
+    color:#939393;
+}
+.rAddedField, .yourLibrariesField{
+    width: -webkit-fill-available;
+    height: 350px;
+    /*background-color: black;*/
+    justify-content: space-evenly;
+    overflow-x: scroll;
+    display: inline-flex;
+    margin-left: 25px;
+    grid-gap: 15px;
+}
+
+.rAddedField:after, .yourLibrariesField:after{
+    content: "";
+    background: #adb5bd;
+    position: absolute;
+    bottom: 18%;
+    right: 0;
+    height: 65%;
+    width: 1px;
+}
+.rAddedField::-webkit-scrollbar, .yourLibrariesField::-webkit-scrollbar{
+    display: none;  /* Safari and Chrome */
+}
+.rForYou{
+    height: 65px;
+}
+.rForYoutxt{
+    padding-left: 25px;
+    font-size: xx-large;
+    margin-top: 15px;
+    margin-left: 15px;
+    color:#939393;
+}
+.rForYouField{
+    position: absolute;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    /*background-color: black;*/
+    justify-content: space-between;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    grid-gap: 15px;
+}
+.rForYouField::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.rightNavBar{
+    overflow-x: scroll;
+}
+.rightNavBar::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+.yfriends{
+    width: -webkit-fill-available;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    color: #939393;
+    font-style: italic;
+    background-color: #f3f3f3!important;
+}
+.yfriendstxt{
+    font-size: x-large;
+}
+.friend-bar{
+    height: 50px;
+    border: solid 1px;
+    border-color: #6f6f6f;
+    border-radius: 5px;
+    display: flex;
+    overflow: hidden;
+    cursor:pointer;
+    z-index: 1;
+}
+.friend-bar:hover{
+
+}
+.friend-bar-image-holder{
+    width: 55px;
+    height: inherit;
+    /*background-color: green;*/
+    margin-left: 5px;
+
+}
+.friend-bar-contents{
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    /*background-color: blue;*/
+    display: flex;
+    flex-direction: column;
+    color:#ced4da;
+    margin-left: 10px;
+}
+.chat-name{
+    height:50%;
+}
+.chat-status{
+    height:50%;
+}
+.chat-overlay {
+    position: absolute;
+    height: inherit;
+    width: 77%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #198754;
+    border: none;
+    border-radius: 5px;
+    z-index: -1;
+}
+.friend-bar:hover .chat-overlay {
+    opacity: 0.7;
+
+}
+.friend-bar:hover .friend-bar-contents {
+    color:white;
+}
+.chatImage{
+    height: inherit;
+    padding: 5px;
+}
+
+
+
+
+.book-contents, .library-contents {
+    position: relative;
+    height: 250px;
+
+    display: flex;
+    flex-direction: column;
+}
+.image-holder:hover .image {
+    opacity: 0.3;
+}
+.image-holder:hover .middle {
+    opacity: 0.6;
+}
+.image-holder:hover .hover-button {
+    opacity: 1;
+}
+.middle {
+    opacity: 0;
+    transition: .5s ease;
+    position: absolute;
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    width: -webkit-fill-available;
+    height: inherit;
+    background-color: #272727;
+    border: none;
+    border-radius: 5px;
+    display: grid;
+    padding: 35px;
+    grid-gap: 25px;
+}
+.hover-button{
+    opacity: 0;
+    transition: .5s ease;
+    -ms-transform: translate(-50%, -50%);
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor:pointer;
+    /*z-index: 1;*/
+    display: flex;
+    justify-content: center;
+}
+.container:hover .image {
+    opacity: 0.3;
+}
+
+.container:hover .middle {
+    opacity: 1;
+}
+.image-holder {
+     height: inherit;
+    display: flex;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+ }
+.author-txt{
+    transition: .5s ease;
+    cursor:pointer;
+}
+/*.author-txt:hover{*/
+/*    transform: scale(1.2)*/
+/*}*/
+.highlight{
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    background-color: #a5c3c7;
+    height: 40px;
+    width: 0%;
+    transition: width 0.5s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 30%;
+}
+.author-txt:hover .highlight{
+    /* hardcoded */
+    width: 162px;
+    border: none;
+    border-radius: 5px;
+}
+.info-holder{
+    font-size: 30px;
+    font-family: 'BioRhyme', serif;
+    width: initial;
+    height: 40px;
+    line-height: 40px;
+    z-index:1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.title-holder{
+
+}
+
+.browseField {
+    display: flex;
+    flex-direction: column;
+    /*height: 30%;*/
+}
+div#browse-txt {
+    color: #939393;
+    font-size: xx-large;
+    font-style: italic;
+}
+.item-field {
+    height: 50px;
+    font-size: large;
+    display: flex;
+    padding-left: 5px;
+    color: #939393;
+    font-style: italic;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.yourBooksField{
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+}
+div#your-books-txt {
+    color: #939393;
+    font-size: xx-large;
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
+
+.modal-ex333 {
+    background-color: rgba(128, 128, 128, 0.5);
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal-ex333.open{
+    opacity: 1;
+    z-index: 999;
+
+}
+.modal-inner {
+    width: 60%;
+    height: 60%;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    display:flex;
+    flex-direction: column;
+
+}
+
+.modal-inner h2{
+    margin:0;
+}
+#closeModal {
+    background-image: linear-gradient(to right, #663399, #8853bd);
+    border-radius: 20px;
+    border: 0px;
+    color: whitesmoke;
+    padding: 10px 25px;
+    margin-top: auto;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+
+}
+
+/*----------------------------accountOverview-------------------------------------------*/
+.accountOverview-center-div{
+    float:right;
+    display: flex;
+}
+div#accountOverview-center-field{
+    /*background-color: black;*/
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+div#account-dashboard{
+    width: 100%;
+    /*background-color: green;*/
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+div#account-image-field{
+    /*background-color: red;*/
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+}
+div#account-image-settings{
+    width: -webkit-fill-available;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div#account-image{
+    /*background-color: black;*/
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    margin: 0 35%;
+    position: relative;
+}
+.profile-pic{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+div#settings-field{
+    background-color: green;
+    height: 70px;
+    position: relative;
+    margin-left: auto;
+    width: 70px;
+}
+div#account-bio-field{
+    /*background-color: cyan;*/
+    height: 25%;
+
+}
+div#account-bio-txt{
+    font-size: xx-large;
+    justify-content: center;
+    display: flex;
+    height: inherit;
+    color: #939393;
+    font-style: italic;
+    padding-top: 10px;
+}
+
+div#account-stats-field{
+    /*background-color: brown;*/
+    height: 25%;
+}
+div#total-number-books{
+
+}
+div#total-number-friends{
+
+}
+div#total-number-likes{
+
+}
+
+
+
+div#account-details{
+    width: 100%;
+    /*height:50%;*/
+    /*background-color: blue;*/
+}
