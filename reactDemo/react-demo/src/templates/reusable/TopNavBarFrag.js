@@ -1,13 +1,20 @@
 import React from 'react';
+import {RedirectFunctions} from "../../js/RedirectFunctions";
+import {closeSettings, openSettings} from "../../js/js";
+import {useNavigate} from "react-router-dom";
+
 
 const TopNavBarComponent = () => {
+    const navigate = useNavigate();
+    const redirectFunctions = RedirectFunctions(navigate);
+
     return (
         <div>
             <div className="modal-ex333" id="modal-ex333">
                 <div className="modal-inner" id="modal-inner">
                     {/* Modal Content */}
                     <div></div>
-                    <button id="closeModal">Close</button>
+                    <button id="closeModal" onClick={() => closeSettings()}>Close</button>
                 </div>
             </div>
 
@@ -18,7 +25,7 @@ const TopNavBarComponent = () => {
                         className="cursorPointer"
                         src="/pictures/vector-book-blue-icon-original%20(1).svg"
                         alt="Book Icon"
-                        onClick={redirectToHomePage}
+                        onClick={() =>  redirectFunctions.redirectTo('home')}
                     />
                 </div>
 
@@ -43,14 +50,14 @@ const TopNavBarComponent = () => {
                                 className="rotate mirror-image"
                                 src="/pictures/icons8-account-48.png"
                                 alt="User Account"
-                                onClick={redirectToMyProfile}
+                                onClick={() =>  redirectFunctions.redirectTo('users/profile')}
                             />
                         </div>
-                        <div className="contentCenter p-l-5px cursorPointer " id="openModal">
-                            <img className="rotate" src="/pictures/icons8-settings-48.png" alt="Settings" onClick={} />
+                        <div className="contentCenter p-l-5px cursorPointer " id="openModal" onClick={() => openSettings()}>
+                            <img className="rotate" src="/pictures/icons8-settings-48.png" alt="Settings"  />
                         </div>
                         <div className="contentCenter p-r-10px cursorPointer">
-                            <img src="/pictures/icons8-exit-48.png" alt="Logout" onClick={logOut} />
+                            <img src="/pictures/icons8-exit-48.png" alt="Logout" onClick={() => redirectFunctions.logOut()} />
                         </div>
                     </div>
                 </div>

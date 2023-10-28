@@ -1,9 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import FriendBarComponent from "./reusable/FriendBarFrag";
 import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
 import TopNavBarComponent from "./reusable/TopNavBarFrag";
+import axios from "axios";
 
-const AccountOverviewComponent = ({ authenticatedUser }) => {
+
+
+const MyProfileComponent = ({ authenticatedUser }) => {
+
+    const [token, setToken] = useState(localStorage.getItem('authToken'));
+    const [user, setUser] = useState([]);
+
+
+    useEffect(() => {
+        // Retrieve the token from localStorage
+
+        const fetchData = async () => {
+            const response = await axios.get(`http://localhost:8080/api/users/profile`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }});
+
+            setUser(response.data);
+            console.log("Response data: " + response.data);
+        };
+        fetchData();
+    }, []);
 
     return (
         <div>
@@ -23,7 +45,7 @@ const AccountOverviewComponent = ({ authenticatedUser }) => {
                                 <div id="account-image">
                                     <img
                                         className="profile-pic"
-                                        src={authenticatedUser.profile_pic_url ? authenticatedUser.profile_pic_url : '/pictures/bubble-gum-avatar-icon.png'}
+                                        src={user.profile_pic_url ? user.profile_pic_url : '/pictures/bubble-gum-avatar-icon.png'}
                                         alt="User Profile Picture"
                                     />
                                 </div>
@@ -32,7 +54,7 @@ const AccountOverviewComponent = ({ authenticatedUser }) => {
 
                         <div id="account-bio-field">
                             <div id="account-bio-txt">
-                                <p className="margin-top-a margin-bot-a">{authenticatedUser.first_name} {authenticatedUser.last_name}</p>
+                                <p className="margin-top-a margin-bot-a">{user.first_name} {user.last_name}</p>
                             </div>
                         </div>
 
@@ -58,4 +80,4 @@ const AccountOverviewComponent = ({ authenticatedUser }) => {
     );
 };
 
-export default AccountOverviewComponent;
+export default MyProfileComponent;

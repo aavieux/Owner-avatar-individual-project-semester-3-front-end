@@ -1,9 +1,39 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import TopNavBarComponent from "./reusable/TopNavBarFrag";
 import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
 import FriendBarComponent from "./reusable/FriendBarFrag";
+import axios from "axios";
+import {RedirectFunctions} from "../js/RedirectFunctions";
+import {useNavigate} from "react-router-dom";
 
-const MyLibraryComponent = ({ allLibrariesForAuthenticatedUser }) => {
+const MyLibraryComponent = () => {
+
+    const authToken = localStorage.getItem("authToken");
+    const [allLibraries, setAllLibraries] = useState([]);
+    const navigate = useNavigate();
+    const redirectFunctions = RedirectFunctions(navigate);
+
+
+    useEffect(() => {
+        const fetchLibraries = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/libraries/mylibrary`, {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`
+                    }
+                });
+                setAllLibraries(response.data); // Assuming the response contains a list of UserDto objects
+                // Handle the friends list in your component state or context as needed
+            } catch (error) {
+                // Handle errors (network error, server error, etc.)
+                console.error('Error fetching all libraries:', error);
+            }
+        };
+        fetchLibraries();
+    }, [authToken]); // us
+
+
+
     return (
         <div>
             {/* CSS Imports */}
@@ -19,11 +49,11 @@ const MyLibraryComponent = ({ allLibrariesForAuthenticatedUser }) => {
                 </div>
 
                 <div className="yourLibrariesField">
-                    {allLibrariesForAuthenticatedUser.map(library => (
+                    {allLibraries.map(library => (
                         <div className="library-contents" key={library.id}>
                             <div className="image-holder">
                                 <div className="middle">
-                                    <div className="hover-button">
+                                    <div className="hover-button"  onClick={() =>  redirectFunctions.redirectToLibraryOverview(library.id)}>
                                         <img className="image" src="/pictures/icons8-view-48.png" alt="View" />
                                     </div>
                                     <div className="hover-button">

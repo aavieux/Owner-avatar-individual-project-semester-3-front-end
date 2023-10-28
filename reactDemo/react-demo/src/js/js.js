@@ -1,22 +1,61 @@
-const openCreateBookBtn = document.getElementById("openModal");
-const closeCreateBookBtn = document.getElementById("closeModal");
-const modalex333 = document.getElementById("modal-ex333");
-const modalInner = document.getElementById("modal-inner")
+// const openCreateBookBtn = document.getElementById("openModal");
+// const closeCreateBookBtn = document.getElementById("closeModal");
+// const modalInner = document.getElementById("modal-inner")
+//
 
-openCreateBookBtn.addEventListener("click", () => {modalex333.classList.add("open");});
-closeCreateBookBtn.addEventListener("click", () => {modalex333.classList.remove("open");});
-    function redirectToHomePage() {
-    window.location.href = '/';
+import {useNavigate} from "react-router-dom";
+
+export function openSettings(){
+    const modalex333 = document.getElementById("modal-ex333");
+    modalex333.classList.add("open");
 }
-    function redirectToMyProfile() {
-            window.location.href = '/users/myprofile'
-    }
-    function redirectToMyLibrary() {
-        window.location.href = '/users/myprofile/mylibrary'
-    }
-    function logOut(){
-        window.location.href = '/logout'
-    }
+export function closeSettings(){
+    const modalex333 = document.getElementById("modal-ex333");
+    modalex333.classList.remove("open");
+}
+// export function redirectTo(destination){
+//     const navigate = useNavigate();
+//     navigate(`/${destination}`)
+// }
+// export function redirectToLibraryOverview (libraryId) {
+//     const navigate = useNavigate();
+//     navigate(`/libraries/mylibrary/${libraryId}`);
+// }
+// export function redirectToBookPage (bookId) {
+//     const navigate = useNavigate();
+//     navigate(`/books/${bookId}`);
+// }
+// export function  redirectToProfileOverview (userId){
+//     const navigate = useNavigate();
+//     navigate(`/users/${userId}`);
+// }
+// export function redirectToMyProfile() {
+//     const navigate = useNavigate();
+//     navigate(`/users/profile`);
+// }
+
+// export function logOut () {
+//     localStorage.removeItem('authToken');
+//     redirectTo("login")
+// }
+
+
+
+
+
+
+//     function redirectToHomePage() {
+//     window.location.href = '/';
+// }
+//     function redirectToMyProfile() {
+//             window.location.href = '/users/myprofile'
+//     }
+//     function redirectToMyLibrary() {
+//         window.location.href = '/users/myprofile/mylibrary'
+//     }
+//     function logOut(){
+//         window.location.href = '/logout'
+//     }
 
 // var friendBars = document.querySelectorAll(".friend-bar");
 // friendBars.forEach(function(friendBar) {

@@ -1,16 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import FriendBarComponent from "./reusable/FriendBarFrag";
 import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
 import TopNavBarComponent from "./reusable/TopNavBarFrag";
+import {useParams} from "react-router-dom";
+import axios from "axios";
 
-const ProfileOverviewComponent = ({ userPageUser, relationType }) => {
+const ProfileOverviewComponent = () => {
+
+    const { userId } = useParams();
+    const authToken = localStorage.getItem("authToken");
+    const [profile, setProfile] = useState([]);
+    useEffect(() => {
+      const fetchData = async () => {
+        const response = await axios.get(`http://localhost:8080/api/users?id=${userId}`, {
+            headers: {
+                Authorization: `Bearer ${authToken}`
+            }});
+            setProfile(response.data);
+
+      };
+      fetchData();
+    }, [userId]);
+
     return (
         <div>
             {/* CSS Imports */}
             {/* <link rel="stylesheet" type="text/css" href="/static/css/styles.css" /> */}
 
             {/* Top NAV */}
-             <TopNavBarComponent />
+             <TopNavBarComponent  />
 
             {/* CENTER */}
             <div className="contentDiv accountOverview-center-div">
@@ -21,7 +39,7 @@ const ProfileOverviewComponent = ({ userPageUser, relationType }) => {
                                 <div id="account-image">
                                     <img
                                         className="profile-pic"
-                                        src={userPageUser.profile_pic_url ? userPageUser.profile_pic_url : '/pictures/bubble-gum-avatar-icon.png'}
+                                        src={profile.profile_pic_url ? profile.profile_pic_url : '/pictures/bubble-gum-avatar-icon.png'}
                                         alt="User Profile Picture"
                                     />
                                 </div>
@@ -29,13 +47,13 @@ const ProfileOverviewComponent = ({ userPageUser, relationType }) => {
                         </div>
 
                         <div id="account-bio-field">
-                            {relationType === 'FRIENDS' && <button id="friendsBTN">FRIENDS</button>}
-                            {relationType === 'NOT_FRIENDS' && <button id="addFriendBtn">Add Friend</button>}
-                            {relationType === 'INCOMING' && <button id="acceptFriendRequestBtn">Accept Friend Request</button>}
-                            {relationType === 'OUTGOING' && <button id="cancelFriendRequestBtn">Cancel Friend Request</button>}
+                            {/*{relationType === 'FRIENDS' && <button id="friendsBTN">FRIENDS</button>}*/}
+                            {/*{relationType === 'NOT_FRIENDS' && <button id="addFriendBtn">Add Friend</button>}*/}
+                            {/*{relationType === 'INCOMING' && <button id="acceptFriendRequestBtn">Accept Friend Request</button>}*/}
+                            {/*{relationType === 'OUTGOING' && <button id="cancelFriendRequestBtn">Cancel Friend Request</button>}*/}
 
                             <div id="account-bio-txt">
-                                <p className="margin-top-a margin-bot-a">{userPageUser.first_name} {userPageUser.last_name}</p>
+                                <p className="margin-top-a margin-bot-a">{profile.first_name} {profile.last_name}</p>
                             </div>
                         </div>
 

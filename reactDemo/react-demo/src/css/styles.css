@@ -6,10 +6,10 @@ html,body{
 }
 
 .hwfa{
-    height: -webkit-fill-available;
+    height: 100%;
 }
 .wwfa{
-    width: -webkit-fill-available;
+    width: 100%;
 }
 .w-inherit{
     width:inherit;
@@ -242,7 +242,7 @@ input#searchQueryInput{
 }
 .smallBoxTop{
     width: 280px;
-    height: -webkit-fill-available;
+    height: 100%;
     /*background-color: black;*/
     position: absolute;
     padding:10px;
@@ -259,21 +259,21 @@ input#searchQueryInput{
 }
 .bigBoxTop{
     height: 65px;
-    width: -webkit-fill-available;
+    width: 100%;
     /*background-color: red;*/
     margin-left: 280px;
     margin-right: 280px;
 }
 .sideNavBarHP{
     position: absolute;
-    height: -webkit-fill-available;
+    height: 100%;
     width: 280px;
     background-color: #f3f3f3!important;
 }
 .contentDiv{
     position: absolute;
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
+    height: 100%;
+    width: calc(100% - 560px);
     margin-left:280px;
     margin-right: 280px;
     background-color: #f3f3f3!important;
@@ -289,13 +289,13 @@ input#searchQueryInput{
     color:#939393;
 }
 .rAddedField, .yourLibrariesField{
-    width: -webkit-fill-available;
+    width: 100%;
     height: 350px;
     /*background-color: black;*/
     justify-content: space-evenly;
     overflow-x: scroll;
     display: inline-flex;
-    margin-left: 25px;
+    /*margin-left: 25px;*/
     grid-gap: 15px;
 }
 
@@ -323,8 +323,8 @@ input#searchQueryInput{
 }
 .rForYouField{
     position: absolute;
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    width: 100%;
+    height: 100%;
     /*background-color: black;*/
     justify-content: space-between;
     overflow-x: scroll;
@@ -344,7 +344,7 @@ input#searchQueryInput{
     display: none;  /* Safari and Chrome */
 }
 .yfriends{
-    width: -webkit-fill-available;
+    width: 100%;
     font-size: large;
     display: flex;
     justify-content: center;
@@ -376,8 +376,8 @@ input#searchQueryInput{
 
 }
 .friend-bar-contents{
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    width: 100%;
+    height: 100%;
     /*background-color: blue;*/
     display: flex;
     flex-direction: column;
@@ -438,7 +438,7 @@ input#searchQueryInput{
     position: absolute;
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-    width: -webkit-fill-available;
+    width: 100%;
     height: inherit;
     background-color: #272727;
     border: none;
@@ -467,12 +467,12 @@ input#searchQueryInput{
     opacity: 1;
 }
 .image-holder {
-     height: inherit;
+    height: inherit;
     display: flex;
     opacity: 1;
     transition: .5s ease;
     backface-visibility: hidden;
- }
+}
 .author-txt{
     transition: .5s ease;
     cursor:pointer;
@@ -500,7 +500,7 @@ input#searchQueryInput{
 .info-holder{
     font-size: 30px;
     font-family: 'BioRhyme', serif;
-    width: initial;
+    width: min-content;
     height: 40px;
     line-height: 40px;
     z-index:1;
@@ -628,7 +628,7 @@ div#account-image-field{
     height: 50%;
 }
 div#account-image-settings{
-    width: -webkit-fill-available;
+    width: 100%;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -636,8 +636,8 @@ div#account-image-settings{
 }
 div#account-image{
     /*background-color: black;*/
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
+    height: 100%;
+    width: 100%;
     margin: 0 35%;
     position: relative;
 }
@@ -691,4 +691,45 @@ div#account-details{
     width: 100%;
     /*height:50%;*/
     /*background-color: blue;*/
+}
+.libraryNameDiv {
+    padding-left: 25px;
+    font-size: xx-large;
+    margin-top: 15px;
+    margin-left: 15px;
+    color: #939393;
+}
+/*book preview*/
+.book-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-cover {
+    width: 200px;
+    height: 300px;
+    margin-right: 20px;
+}
+
+.book-details {
+    text-align: left;
+}
+
+.library-button, .read-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.library-button:hover, .read-button:hover {
+    background-color: #45a049;
 }
