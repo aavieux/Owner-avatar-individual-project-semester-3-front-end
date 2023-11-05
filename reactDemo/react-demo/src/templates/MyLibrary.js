@@ -22,11 +22,33 @@ const MyLibraryComponent = () => {
                         Authorization: `Bearer ${authToken}`
                     }
                 });
-                setAllLibraries(response.data); // Assuming the response contains a list of UserDto objects
-                // Handle the friends list in your component state or context as needed
+                if (response.status === 200) {
+                    setAllLibraries(response.data);// Log the fetched data
+                }
+                else {
+                    console.error(`Unexpected response status: ${response.status}`);
+                }
             } catch (error) {
-                // Handle errors (network error, server error, etc.)
-                console.error('Error fetching all libraries:', error);
+
+                if (error.response.status === 409){
+
+                    console.error(error.response.data);
+                }
+                else if (error.response.status === 204){
+
+                    console.error(error.response.data);
+                }
+                else if (error.response.status === 404){
+
+                    console.error(error.response.data);
+                }
+                else if (error.response.status === 401){
+
+                    console.error(error.response.data);
+                }
+                else{
+                    console.error("There was an unexpected error with connecting to the API")
+                }
             }
         };
         fetchLibraries();

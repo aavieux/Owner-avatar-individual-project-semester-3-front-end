@@ -26,11 +26,40 @@ const BookOverviewComponent = () => {
 
     useEffect(() => {
         const fetchBook = async () => {
-            const response = await axios.get(`http://localhost:8080/api/books/${bookId}`, {
-                headers: {
-                    Authorization: `Bearer ${authToken}`
-                }});
-            setBook(response.data);
+            try{
+                const response = await axios.get(`http://localhost:8080/api/books/${bookId}`, {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`
+                    }});
+                setBook(response.data);
+                if (response.status === 200) {
+                    setBook(response.data);// Log the fetched data
+                }
+                else {
+                    console.error(`Unexpected response status: ${response.status}`);
+                }
+            } catch (error) {
+
+                if (error.response.status === 409){
+
+                    console.error(error.response.data);
+                }
+                else if (error.response.status === 204){
+
+                    console.error(error.response.data);
+                }
+                else if (error.response.status === 404){
+
+                    console.error(error.response.data);
+                }
+                else if (error.response.status === 401){
+
+                    console.error(error.response.data);
+                }
+                else{
+                    console.error("There was an unexpected error with connecting to the API")
+                }
+            }
 
         };
         fetchBook();
