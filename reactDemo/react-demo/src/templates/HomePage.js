@@ -52,13 +52,13 @@ const HomePageComponent = () => {
                                 <div className="image-holder">
                                     <div className="middle">
                                         <div className="hover-button">
-                                            <img className="image" src="/pictures/icons8-view-48.png" alt="View" onClick={() => redirectFunctions.redirectToBookPage(book.id)}/>
+                                            <img className="image book-hover-button" src="/pictures/icons8-view-48.png" alt="View" onClick={() => redirectFunctions.redirectToBookPage(book.id)}/>
                                         </div>
                                         <div className="hover-button">
-                                            <img className="image" src="/pictures/icons8-star-48.png" alt="Star" />
+                                            <img className="image book-hover-button" src="/pictures/icons8-star-48.png" alt="Star" />
                                         </div>
                                     </div>
-                                    <img className="h-inherit" src={book.cover_url} alt={`${book.title}'s image`} />
+                                    <img className="h-inherit w-inherit" src={book.cover_url} alt={`${book.title}'s image`} />
                                 </div>
 
                                 <div className="info-holder">

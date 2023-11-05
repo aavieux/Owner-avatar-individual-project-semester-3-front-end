@@ -58,12 +58,40 @@ const ProfileOverviewComponent = () => {
                         </div>
 
                         <div id="account-stats-field">
-                            <div id="total-number-books">{/* Total number of books content */}</div>
-                            <div id="total-number-friends">{/* Total number of friends content */}</div>
-                            <div id="total-number-likes">{/* Total number of likes content */}</div>
+                            <div id="personal-info-header-txt">
+                                <p>Personal Info</p>
+                            </div>
+                            <div id="personal-info-txt">
+                                <p>
+                                    Email: {profile.email}
+                                </p>
+                            </div>
+                            <div id="personal-info-header-txt">
+                                <p>General Information</p>
+                            </div>
+                            <div id="personal-info-txt">
+                                {/* Total number of books content */}
+                            </div>
+                            <div id="personal-info-txt">
+                                <p>
+                                    Total friends: {profile.total_friends}
+                                </p>
+                            </div>
+                            <div id="personal-info-txt">
+                                <p>
+                                    Favourite author: {profile.f_author_pseudonym}
+                                </p>
+                            </div>
+                            <div id="total-number-likes">{/* Total number of likes content */}
+
+                            </div>
                         </div>
                     </div>
-                    <div id="account-details">{/* Account details content */}</div>
+                    <div id="account-details">
+
+
+
+                    </div>
                 </div>
             </div>
 

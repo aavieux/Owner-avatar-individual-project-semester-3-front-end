@@ -13,6 +13,15 @@ export function closeSettings(){
     const modalex333 = document.getElementById("modal-ex333");
     modalex333.classList.remove("open");
 }
+export function openAddLibraryMenu(){
+    const modalLibrary = document.getElementById('modal-Library');
+    console.log(modalLibrary)
+    modalLibrary.classList.add("open");
+}
+export function closeAddLibraryMenu(){
+    const modalLibrary = document.getElementById('modal-Library');
+    modalLibrary.classList.remove("open");
+}
 // export function redirectTo(destination){
 //     const navigate = useNavigate();
 //     navigate(`/${destination}`)

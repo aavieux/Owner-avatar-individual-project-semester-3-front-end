@@ -14,7 +14,7 @@ const FriendBarComponent = () => {
 
         const fetchFriends = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/relationships/allfriends?userId=${userId}`, {
+                const response = await axios.get(`http://localhost:8080/api/relationships/allfriends`, {
                     headers: {
                         Authorization: `Bearer ${authToken}`
                     }

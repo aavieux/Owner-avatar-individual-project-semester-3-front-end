@@ -50,14 +50,14 @@ const MyLibraryComponent = () => {
 
                 <div className="yourLibrariesField">
                     {allLibraries.map(library => (
-                        <div className="library-contents" key={library.id}>
+                        <div className="library-contents w-unset" key={library.id}>
                             <div className="image-holder">
                                 <div className="middle">
                                     <div className="hover-button"  onClick={() =>  redirectFunctions.redirectToLibraryOverview(library.id)}>
-                                        <img className="image" src="/pictures/icons8-view-48.png" alt="View" />
+                                        <img className="image book-hover-button" src="/pictures/icons8-view-48.png" alt="View" />
                                     </div>
                                     <div className="hover-button">
-                                        <img className="image" src="/pictures/icons8-star-48.png" alt="Star" />
+                                        <img className="image book-hover-button" src="/pictures/icons8-star-48.png" alt="Star" />
                                     </div>
                                 </div>
                                 <img className="h-inherit" src="/pictures/hand-drawn-seamless-pattern-book-doodle-elements-education-concept_253081-84.avif" alt="Library" />

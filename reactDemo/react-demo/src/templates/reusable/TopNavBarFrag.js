@@ -13,7 +13,11 @@ const TopNavBarComponent = () => {
             <div className="modal-ex333" id="modal-ex333">
                 <div className="modal-inner" id="modal-inner">
                     {/* Modal Content */}
-                    <div></div>
+                    <div className="settings-header-txt">
+                        <p>
+                            Settings
+                        </p>
+                    </div>
                     <button id="closeModal" onClick={() => closeSettings()}>Close</button>
                 </div>
             </div>

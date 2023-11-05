@@ -81,6 +81,9 @@ html,body{
 .margin-bot-a{
     margin-bottom: auto;
 }
+.w-unset{
+    width: unset !important;
+}
 /*-------------------------------------------------------*/
 /*LOGIN*/
 .loginBody{
@@ -278,6 +281,9 @@ input#searchQueryInput{
     margin-right: 280px;
     background-color: #f3f3f3!important;
 }
+.contentDivBookPreview{
+    padding-top: 50px;
+}
 .rAdded, .yourLibraries{
     height: 65px;
 }
@@ -419,18 +425,20 @@ input#searchQueryInput{
 .book-contents, .library-contents {
     position: relative;
     height: 250px;
-
     display: flex;
     flex-direction: column;
+    width: 150px;
 }
-.image-holder:hover .image {
-    opacity: 0.3;
-}
+/*.image-holder:hover .image {*/
+/*    opacity: 0.3;*/
+/*}*/
 .image-holder:hover .middle {
     opacity: 0.6;
 }
 .image-holder:hover .hover-button {
     opacity: 1;
+    border: none;
+    border-radius: 10px;
 }
 .middle {
     opacity: 0;
@@ -459,6 +467,12 @@ input#searchQueryInput{
     display: flex;
     justify-content: center;
 }
+.book-hover-button{
+    opacity: 1;
+    background-color: aliceblue;
+    border: inherit;
+    border-radius: inherit;
+}
 .container:hover .image {
     opacity: 0.3;
 }
@@ -472,6 +486,7 @@ input#searchQueryInput{
     opacity: 1;
     transition: .5s ease;
     backface-visibility: hidden;
+    width: inherit;
 }
 .author-txt{
     transition: .5s ease;
@@ -497,16 +512,16 @@ input#searchQueryInput{
     border: none;
     border-radius: 5px;
 }
-.info-holder{
+.info-holder {
     font-size: 30px;
     font-family: 'BioRhyme', serif;
-    width: min-content;
     height: 40px;
     line-height: 40px;
-    z-index:1;
+    z-index: 1;
     position: relative;
     display: flex;
     flex-direction: column;
+    width: inherit;
 }
 .title-holder{
 
@@ -545,14 +560,7 @@ div#your-books-txt {
 }
 
 
-
-
-
-
-
-
-
-.modal-ex333 {
+.modal-ex333 , .modal-Library{
     background-color: rgba(128, 128, 128, 0.5);
     opacity: 0;
     position: fixed;
@@ -569,12 +577,13 @@ div#your-books-txt {
 }
 
 
-.modal-ex333.open{
+.modal-ex333.open, .modal-Library.open{
     opacity: 1;
     z-index: 999;
 
 }
-.modal-inner {
+
+.modal-inner, .modal-library-inner {
     width: 60%;
     height: 60%;
     background-color: white;
@@ -588,20 +597,27 @@ div#your-books-txt {
 .modal-inner h2{
     margin:0;
 }
-#closeModal {
-    background-image: linear-gradient(to right, #663399, #8853bd);
+#closeModal, #closeModalLibrary{
+    background-image: linear-gradient(to right, #00cbff, #3554f7);
     border-radius: 20px;
     border: 0px;
     color: whitesmoke;
     padding: 10px 25px;
     margin-top: auto;
-    width: 80%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
 
 }
-
+.settings-header-txt{
+    font-size: xx-large;
+    display: flex;
+    color: #939393;
+    font-style: italic;
+    padding-top: 20px;
+    justify-content: center;
+}
 /*----------------------------accountOverview-------------------------------------------*/
 .accountOverview-center-div{
     float:right;
@@ -648,6 +664,21 @@ div#account-image{
     transform: translate(-50%, -50%);
     max-width: 100%;
     max-height: 100%;
+}
+div#personal-info-txt {
+    font-size: x-large;
+    display: flex;
+    color: #939393;
+    font-style: italic;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+div#personal-info-header-txt {
+    font-size: xx-large;
+    display: flex;
+    color: #939393;
+    font-style: italic;
+    padding-top: 10px;
 }
 div#settings-field{
     background-color: green;
@@ -700,6 +731,36 @@ div#account-details{
     color: #939393;
 }
 /*book preview*/
+.bigDiv {
+    /*width: 300px;*/
+    /*height: 300px;*/
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+}
+
+.scrollableDiv {
+    max-height: 250px;
+    overflow-y: auto;
+    font-size: x-large;
+}
+
+.libraryDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.libraryName {
+    padding-left: 10px;
+}
+
+.checkboxContainer {
+    margin-right: 10px;
+}
 .book-preview {
     display: flex;
     justify-content: center;
@@ -723,11 +784,13 @@ div#account-details{
 .library-button, .read-button {
     background-color: #4caf50;
     color: white;
-    border: none;
     padding: 10px 20px;
     margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+    border: none;
+    border-radius: 10px;
+    margin-right: 5px;
 }
 
 .library-button:hover, .read-button:hover {
