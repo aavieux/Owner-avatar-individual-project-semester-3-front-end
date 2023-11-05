@@ -97,6 +97,48 @@ const BookOverviewComponent = () => {
         openAddLibraryMenu();
         await fetchLibraries(book); // Assuming fetchLibraries is an asynchronous function returning a Promise
     };
+    const addBookToLibraries = async () =>{
+        try{
+            console.log("=========================================================")
+            console.log(JSON.stringify(checkedLibraries.map(library => library.id)))
+            console.log("=========================================================")
+
+            const response = await axios.post(`http://localhost:8080/api/books/${bookId}`, JSON.stringify(checkedLibraries.map(library => library.id)), {
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    'Content-Type': 'application/json',
+
+
+                }});
+            if (response.status === 200) {
+               window.location.reload();
+            }
+            else {
+                console.error(`Unexpected response status: ${response.status}`);
+            }
+        } catch (error) {
+
+            if (error.response.status === 409){
+
+                console.error(error.response.data);
+            }
+            else if (error.response.status === 204){
+
+                console.error(error.response.data);
+            }
+            else if (error.response.status === 404){
+
+                console.error(error.response.data);
+            }
+            else if (error.response.status === 401){
+
+                console.error(error.response.data);
+            }
+            else{
+                console.error("There was an unexpected error with connecting to the API")
+            }
+        }
+    }
 
 
     return (
@@ -132,7 +174,7 @@ const BookOverviewComponent = () => {
                                     <div className="checkboxContainer">
                                         <input
                                             type="checkbox"
-                                            checked={true}
+                                            checked={checkedLibraries.includes(library)}
                                             onChange={() => handleCheckboxChange(library)}
                                         />
                                     </div>
@@ -143,7 +185,7 @@ const BookOverviewComponent = () => {
                     </div>
 
                     <button id="closeModalLibrary" onClick={() => (closeAddLibraryMenu())}>Close</button>
-                    <button onClick={() => console.log(librariesWithTheBook)}>Submit</button>
+                    <button onClick={() => addBookToLibraries() }>Submit</button>
                 </div>
             </div>
             <div className="float-right contentDiv contentDivBookPreview display-block">
