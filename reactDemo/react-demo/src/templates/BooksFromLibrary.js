@@ -1,7 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import TopNavBarComponent from "./reusable/TopNavBarFrag";
-import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
-import FriendBarComponent from "./reusable/FriendBarFrag";
 import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {RedirectFunctions} from "../js/RedirectFunctions";
@@ -59,15 +56,11 @@ const BooksFromLibraryComponent = () => {
 
     return (
         <div>
-            {/* Top NAV - Include your TopNavBar component here */}
-             <TopNavBarComponent />
-
-            {/* CENTER */}
             <div className="float-right contentDiv display-block">
                 <div className="libraryNameDiv">
                     <p id="libraryNameTxt"> {booksList.length > 0 ? booksList[0].library_title : "No Books Available"} </p>
                 </div>
-                <div className="rAddedField">
+                <div className="rAddedField h-100">
                     {booksList.length > 0 ? (
                         booksList.map(book => (
                         <div className="book-contents" key={book.id}>
@@ -97,12 +90,6 @@ const BooksFromLibraryComponent = () => {
                     ))): null}
                 </div>
             </div>
-
-            {/* SIDE NAV left - Include your LeftNavBar component here */}
-             <LeftNavBarComponent />
-
-            {/* SIDE NAV right YOUR FRIENDS - Include your FriendBar component here */}
-             <FriendBarComponent />
         </div>
     );
 };

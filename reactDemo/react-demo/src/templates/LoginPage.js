@@ -18,39 +18,32 @@ const LoginComponent = () => {
         console.log(formData)
     };
     useEffect(() => {
-        // Check if the user is already authenticated (has a stored token)
         const authToken = localStorage.getItem('authToken');
         if (authToken) {
-            // If authenticated, redirect to the desired page (e.g., /users/myprofile)
+
             redirectFunctions.redirectToMyProfile();
         } else {
-            // If not authenticated, set loading to false to display the login form
+
             setLoading(false);
         }
-    }, ); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
+    }, );
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8080/api/auth/authenticate', formData);
-            const authToken = response.data.token; // Assuming the token is returned in the 'token' field of the response
-            localStorage.setItem('authToken', authToken); // Store the token in localStorage (or secure storage)
-
+            const authToken = response.data.token;
+            localStorage.setItem('authToken', authToken);
             redirectFunctions.redirectToMyProfile();
         } catch (error) {
-            // Handle authentication error (display error message, etc.)
             console.error('Authentication failed:', error);
         }
     };
     if (loading) {
-        // Render loading indicator or any other loading content while checking authentication status
         return <div>Loading...</div>;
     }
     return (
         <>
-            {/* CSS Import (if needed) */}
-            {/* <link rel="stylesheet" type="text/css" href="/static/css/styles.css" /> */}
-            {/* HTML Content */}
             <body className="loginBody">
             <div className="login-container">
                 <h1>Please Log In</h1>

@@ -1,7 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import FriendBarComponent from "./reusable/FriendBarFrag";
-import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
-import TopNavBarComponent from "./reusable/TopNavBarFrag";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 
@@ -10,6 +7,8 @@ const ProfileOverviewComponent = () => {
     const { userId } = useParams();
     const authToken = localStorage.getItem("authToken");
     const [profile, setProfile] = useState([]);
+
+
     useEffect(() => {
       const fetchData = async () => {
           try{
@@ -53,13 +52,6 @@ const ProfileOverviewComponent = () => {
 
     return (
         <div>
-            {/* CSS Imports */}
-            {/* <link rel="stylesheet" type="text/css" href="/static/css/styles.css" /> */}
-
-            {/* Top NAV */}
-             <TopNavBarComponent  />
-
-            {/* CENTER */}
             <div className="contentDiv accountOverview-center-div">
                 <div id="accountOverview-center-field">
                     <div id="account-dashboard">
@@ -117,21 +109,9 @@ const ProfileOverviewComponent = () => {
                         </div>
                     </div>
                     <div id="account-details">
-
-
-
                     </div>
                 </div>
             </div>
-
-            {/* SIDE NAV left */}
-             <LeftNavBarComponent />
-
-            {/* SIDE NAV right YOUR FRIENDS */}
-             <FriendBarComponent />
-
-            {/* JavaScript Import */}
-            {/* <script src="/./js/js.js"></script> */}
         </div>
     );
 };

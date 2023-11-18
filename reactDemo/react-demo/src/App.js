@@ -14,22 +14,27 @@ import BooksFromLibraryComponent from "./templates/BooksFromLibrary";
 import BookOverviewComponent from "./templates/BookOverview";
 import {AuthContext} from "./templates/Authentication/AuthProvider";
 import PrivateRoute from "./templates/Authentication/PrivateRoute";
+import TopNavBarComponent from "./templates/reusable/TopNavBarFrag";
+import LeftNavBarComponent from "./templates/reusable/LeftNavBarFrag";
+import FriendBarComponent from "./templates/reusable/FriendBarFrag";
 
 const App = () => {
     // const { isAuthenticated } = useContext(AuthContext);
   return (
       <Router>
+        <TopNavBarComponent/>
         <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePageComponent />} />
-          <Route path="/users/profile" element={<MyProfileComponent />} />
+            <Route path="/home" element={<HomePageComponent />} />
+            <Route path="/users/profile" element={<MyProfileComponent />} />
             <Route path="/login" element={<LoginComponent />} />
             <Route path="/users/:userId" element={<ProfileOverviewComponent/>} />
             <Route path="/libraries/mylibrary" element={<MyLibraryComponent/>}/>
             <Route path ="/libraries/mylibrary/:libraryId" element={<BooksFromLibraryComponent/>}/>
             <Route path = "/books/:bookId" element={<BookOverviewComponent/>}/>
-
         </Routes>
+        <LeftNavBarComponent/>
+      <FriendBarComponent/>
       </Router>
   );
 }

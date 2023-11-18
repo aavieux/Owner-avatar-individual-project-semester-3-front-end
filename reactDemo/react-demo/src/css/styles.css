@@ -607,7 +607,7 @@ div#your-books-txt {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
 }
 .settings-header-txt{
@@ -795,4 +795,54 @@ div#account-details{
 
 .library-button:hover, .read-button:hover {
     background-color: #45a049;
+}
+.buttonsField {
+    margin-top: auto;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/* Style for the results container */
+.results-container {
+    position: absolute;
+    width: inherit;
+}
+
+/* Style for the book list */
+.results-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 17px 0;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    width: inherit;
+    border-radius: 5px;
+
+}
+
+/* Style for individual book items */
+.results-container ul li {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: inherit;
+    border-bottom: solid;
+    border-width: 1px;
+    color: inherit;
+
+}
+
+/* Style for the empty results */
+.empty-results {
+    display: none; /* Initially hidden */
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
 }

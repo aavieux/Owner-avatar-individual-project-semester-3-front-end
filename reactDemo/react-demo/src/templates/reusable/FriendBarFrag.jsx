@@ -4,14 +4,14 @@ import { RedirectFunctions } from "../../js/RedirectFunctions";
 import {useNavigate} from "react-router-dom";
 
 const FriendBarComponent = () => {
+
     const navigate = useNavigate();
-    const authToken = localStorage.getItem("authToken");
-    const [allFriends, setAllFriends] = useState([]);
     const redirectFunctions = RedirectFunctions(navigate);
+    const authToken = localStorage.getItem("authToken");
 
+    const [allFriends, setAllFriends] = useState([]);
+    
     useEffect(() => {
-        const userId = 11;
-
         const fetchFriends = async () => {
             try {
                 const response = await axios.get(`http://localhost:8080/api/relationships/allfriends`, {
@@ -51,12 +51,7 @@ const FriendBarComponent = () => {
 
         };
         fetchFriends();
-    }, [authToken]); // useEffect will run whenever authToken changes
-
-
-
-    // Rest of your component code
-    // ...
+    }, [authToken]);
 
     return (
         <div className="d-flex flex-column flex-shrink-0 p-2-rem text-white sideNavBarHP right0 g-r-g-20px rightNavBar">

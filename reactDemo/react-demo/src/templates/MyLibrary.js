@@ -1,7 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import TopNavBarComponent from "./reusable/TopNavBarFrag";
-import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
-import FriendBarComponent from "./reusable/FriendBarFrag";
 import axios from "axios";
 import {RedirectFunctions} from "../js/RedirectFunctions";
 import {useNavigate} from "react-router-dom";
@@ -58,13 +55,6 @@ const MyLibraryComponent = () => {
 
     return (
         <div>
-            {/* CSS Imports */}
-            {/* <link rel="stylesheet" type="text/css" href="/static/css/styles.css" /> */}
-
-            {/* Top NAV */}
-             <TopNavBarComponent />
-
-            {/* CENTER */}
             <div className="float-right contentDiv display-block">
                 <div className="yourLibraries">
                     <p className="yourLibrariestxt">Your Libraries</p>
@@ -98,15 +88,6 @@ const MyLibraryComponent = () => {
                 </div>
                 <div className="rForYouField">{/* Recommended books go here */}</div>
             </div>
-
-            {/* SIDE NAV left */}
-             <LeftNavBarComponent />
-
-            {/* SIDE NAV right YOUR FRIENDS */}
-             <FriendBarComponent />
-
-            {/* JavaScript Import */}
-            {/* <script src="/./js/js.js"></script> */}
         </div>
     );
 };

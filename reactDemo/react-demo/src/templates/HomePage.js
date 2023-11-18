@@ -54,9 +54,6 @@ const HomePageComponent = () => {
 
     return (
         <>
-            {/* Top NAV */}
-            <TopNavBarComponent />
-
             {/* CENTER */}
             <div className="float-right contentDiv display-block">
                 <div className="rAdded">
@@ -103,12 +100,6 @@ const HomePageComponent = () => {
                 </div>
                 <div className="rForYouField">{/* Recommended books go here */}</div>
             </div>
-
-            {/* SIDE NAV left */}
-            <LeftNavBarComponent />
-
-            {/* SIDE NAV right YOUR FRIENDS */}
-            <FriendBarComponent />
         </>
     );
 };

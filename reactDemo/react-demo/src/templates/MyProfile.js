@@ -57,13 +57,6 @@ const MyProfileComponent = ({ authenticatedUser }) => {
 
     return (
         <div>
-            {/* CSS Imports */}
-            {/* <link rel="stylesheet" type="text/css" href="/static/css/styles.css" /> */}
-
-            {/* Top NAV */}
-             <TopNavBarComponent />
-
-            {/* CENTER */}
             <div className="contentDiv accountOverview-center-div">
                 <div id="accountOverview-center-field">
                     <div id="account-dashboard">
@@ -119,15 +112,6 @@ const MyProfileComponent = ({ authenticatedUser }) => {
                     <div id="account-details">{/* Account details content */}</div>
                 </div>
             </div>
-
-            {/* SIDE NAV left */}
-             <LeftNavBarComponent />
-
-            {/* SIDE NAV right YOUR FRIENDS */}
-             <FriendBarComponent />
-
-            {/* JavaScript Import */}
-            {/* <script src="/./js/js.js"></script> */}
         </div>
     );
 };
