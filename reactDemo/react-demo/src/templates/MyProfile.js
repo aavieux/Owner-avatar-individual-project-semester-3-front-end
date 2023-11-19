@@ -1,10 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import FriendBarComponent from "./reusable/FriendBarFrag";
-import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
-import TopNavBarComponent from "./reusable/TopNavBarFrag";
 import axios from "axios";
-
-
 
 const MyProfileComponent = ({ authenticatedUser }) => {
 

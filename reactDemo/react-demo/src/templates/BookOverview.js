@@ -1,13 +1,24 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import axios from "axios";
 import {closeAddLibraryMenu, openAddLibraryMenu} from "../js/js";
-import data from "bootstrap/js/src/dom/data";
+import useFetchData from "./custom-hooks/FetchDataHook";
 
 const BookOverviewComponent = () => {
-    const authToken = localStorage.getItem("authToken");
-    const { bookId } = useParams();
-    const [book, setBook] = useState([]);
+
+    const {bookId} = useParams();
+    const {book, bookError, bookLoading} = useFetchData("GET", "/books/${bookId}", null, null)
+
+    const {libraries, librariesError, librariesLoading} = useFetchData("GET", "/libraries/mylibrary", null, null)
+    //TODO get libraries /libraries/mylibrary
+
+    // setLibrariesWithTheBook(librariesResponse.data.filter(library => library.book_ids.includes(book.id)).map(library => ({
+    //     ...library, // Spread the existing library object
+    //     isChecked: 'true' // Add a new key-value pair to each library object
+    // })));
+    // setLibrariesWithoutTheBook(librariesResponse.data.filter(library => !library.book_ids.includes(book.id)).map(library => ({
+    //     ...library, // Spread the existing library object
+    //     isChecked: 'false' // Add a new key-value pair to each library object
+    // })));
 
     const [librariesWithTheBook, setLibrariesWithTheBook] = useState([]);
     const [librariesWithoutTheBook, setLibrariesWithoutTheBook] = useState([]);
@@ -35,156 +46,45 @@ const BookOverviewComponent = () => {
         console.log(librariesToBeDeleted);
     }
 
-    useEffect(() => {
-        const fetchBook = async () => {
-            try{
-                const response = await axios.get(`http://localhost:8080/api/books/${bookId}`, {
-                    headers: {
-                        Authorization: `Bearer ${authToken}`
-                    }});
-                setBook(response.data);
-                if (response.status === 200) {
-                    setBook(response.data);// Log the fetched data
-                }
-                else {
-                    console.error(`Unexpected response status: ${response.status}`);
-                }
-            } catch (error) {
-
-                if (error.response.status === 409){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 204){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 404){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 401){
-
-                    console.error(error.response.data);
-                }
-                else{
-                    console.error("There was an unexpected error with connecting to the API")
-                }
-            }
-
-        };
-        fetchBook();
-    }, [bookId]);
-
-
-    const fetchLibraries = async (book) => {
-        try {
-            const librariesResponse = await axios.get(`http://localhost:8080/api/libraries/mylibrary`, {
-                headers: {
-                    Authorization: `Bearer ${authToken}`
-                }
-            });
-
-            // Assuming `book` is defined and has an `id` property
-            setLibrariesWithTheBook(librariesResponse.data.filter(library => library.book_ids.includes(book.id)).map(library => ({
-                ...library, // Spread the existing library object
-                isChecked: 'true' // Add a new key-value pair to each library object
-                })));
-            setLibrariesWithoutTheBook(librariesResponse.data.filter(library => !library.book_ids.includes(book.id)).map(library => ({
-                ...library, // Spread the existing library object
-                isChecked: 'false' // Add a new key-value pair to each library object
-            })));
-
-        } catch (error) {
-            // Handle error (e.g., show an error message)
-            console.error('Error fetching libraries:', error);
-        }
-    };
-
 
     const openMenu = async () => {
-        openAddLibraryMenu();
-        await fetchLibraries(book); // Assuming fetchLibraries is an asynchronous function returning a Promise
+        openAddLibraryMenu();// Assuming fetchLibraries is an asynchronous function returning a Promise
     };
-    const addBookToLibraries = async () =>{
-        try{
-            const response = await axios.post(`http://localhost:8080/api/books/${bookId}`, JSON.stringify(librariesToBeAdded.map(library => library.id)), {
-                headers: {
-                    Authorization: `Bearer ${authToken}`,
-                    'Content-Type': 'application/json',
-                }});
-            if (response.status === 200) {
-                console.log("Successfully added books!");
+    const addBookToLibraries = () => {
+        // Using the custom hook 'useFetchData' within the functional component
+        const { data: result, error: currentError } = useFetchData(
+            "POST", `/books/${bookId}`, // Ensure 'bookId' is defined in your component
+            {'Content-Type': 'application/json'},
+            JSON.stringify(librariesToBeAdded.map(library => library.id))
+        );
+        if (result.status === 200){
 
-            }
-            else {
-                console.error(`Unexpected response status: ${response.status}`);
-            }
-        } catch (error) {
+            window.location.reload();
 
-            if (error.response.status === 409){
-
-                console.error(error.response.data);
-            }
-            else if (error.response.status === 204){
-
-                console.error(error.response.data);
-            }
-            else if (error.response.status === 404){
-
-                console.error(error.response.data);
-            }
-            else if (error.response.status === 401){
-
-                console.error(error.response.data);
-            }
-            else{
-                console.error("There was an unexpected error with connecting to the API")
-            }
+            console.log("Successfully added books!");
         }
+        else{
+            console.log("There was a problem adding the books!");
+        }
+        //TODO error check
     }
-    const deleteBooksFromLibraries = async () =>{
-        // if (librariesToBeDeleted.length !== 0)
-        // {
-        try{
-            const host = 'http://localhost:8080';
-            const deleteResponse = await axios.delete(`${host}/api/books/${bookId}`, {
-                headers: {
-                    Authorization: `Bearer ${authToken}`,
-                },
-                data: JSON.stringify(librariesToBeDeleted.map(library => library.id)),
-            });
-            if (deleteResponse.status === 200){
-                window.location.reload();
+    const deleteBooksFromLibraries = async () => {
 
-                console.log("Successfully deleted books!");
-            }
-            else{
-                console.log("There was a problem deleting books!");
-            }
+        const {data: result, error: currentError} = useFetchData(
+            "DELETE", `/books/${bookId}`,
+            null,
+            JSON.stringify(librariesToBeDeleted.map(library => library.id))
+        );
+        if (result.status === 200) {
+
+            window.location.reload();
+
+            console.log("Successfully deleted books!");
+        } else {
+            console.log("There was a problem deleting books!");
         }
-        catch (error) {
-
-            if (error.response.status === 409) {
-                console.error(error.response.data);
-            } else if (error.response.status === 204) {
-
-                console.error(error.response.data);
-            } else if (error.response.status === 404) {
-
-                console.error(error.response.data);
-            } else if (error.response.status === 401) {
-
-                console.error(error.response.data);
-            } else {
-                console.error("There was an unexpected error with connecting to the API")
-            }
-
-
-        }
-        // }
+        return { result, currentError };
     }
-
 
     return (
         <>

@@ -22,7 +22,7 @@ const SearchBar = () => {
                         Authorization: `Bearer ${authToken}`
                     }
                 });
-                
+
                 setBooks(response.data);
             }
             else {

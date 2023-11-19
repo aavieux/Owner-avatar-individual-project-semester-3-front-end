@@ -1,65 +1,64 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
 import { RedirectFunctions } from "../../js/RedirectFunctions";
 import {useNavigate} from "react-router-dom";
+import useFetchData from "../custom-hooks/FetchDataHook";
 
 const FriendBarComponent = () => {
 
     const navigate = useNavigate();
     const redirectFunctions = RedirectFunctions(navigate);
-    const authToken = localStorage.getItem("authToken");
 
-    const [allFriends, setAllFriends] = useState([]);
-    
-    useEffect(() => {
-        const fetchFriends = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8080/api/relationships/allfriends`, {
-                    headers: {
-                        Authorization: `Bearer ${authToken}`
-                    }
-                });
-                if (response.status === 200) {
-                    setAllFriends(response.data);// Log the fetched data
-                }
-                else {
-                    console.error(`Unexpected response status: ${response.status}`);
-                }
-            }
-            catch (error) {
-
-                if (error.response.status === 409){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 204){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 404){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 401){
-
-                    console.error(error.response.data);
-                }
-                else{
-                    console.error("There was an unexpected error with connecting to the API")
-                }
-            }
-
-        };
-        fetchFriends();
-    }, [authToken]);
-
+    const {data, error, loading} = useFetchData("GET", "/relationships/allfriends", null, null)
+    // useEffect(() => {
+    //     const fetchFriends = () => {
+    //         try {
+    //             console.log("tuka");
+    //             const {
+    //                 data: data,
+    //                 error: error,
+    //                 loading: loading
+    //             } = useFetchData("GET", "/relationships/allfriends", null, null)
+    //
+    //             // Check if fetchDataHook returned an error
+    //             if (error) {
+    //                 // Handle the fetchError from fetchDataHook
+    //                 setError(error);
+    //                 console.log(error);
+    //                 return; // Exit the function early to prevent further execution
+    //             }
+    //             setAllFriends(data);
+    //             console.log("ok");
+    //             setError(null);
+    //
+    //         } catch (err) {
+    //             setError(err.message || 'An unexpected error occurred');
+    //             console.log("not ok");
+    //         }
+    //     };
+    //
+    //     fetchFriends();
+    // }, []);
     return (
         <div className="d-flex flex-column flex-shrink-0 p-2-rem text-white sideNavBarHP right0 g-r-g-20px rightNavBar">
             <div className="yfriends">
                 <p className="yfriendstxt">Your friends</p>
             </div>
-            {allFriends.map(friend => (
-                <div className="friend-bar" key={friend.id}>
+
+            {error ? (
+                <div className="error-message">
+                    {/* Display an error message */}
+                    <p>There was an error: {error}</p>
+                    {/* You can add more UI elements or instructions for the user */}
+                </div>
+            ) : !data || data.length === 0 ? (
+                <div className="no-friends-message">
+                    {/* Display a message when data is empty */}
+                    <p>No friends available</p>
+                    {/* You can add more UI elements or instructions for the user */}
+                </div>
+            ) : (
+                data.map((friend) => (
+                    <div className="friend-bar" key={friend.id}>
                     <div className="chat-overlay"></div>
                     <div className="friend-bar-image-holder">
                         <img
@@ -84,7 +83,8 @@ const FriendBarComponent = () => {
                         <button type="submit">Go to User</button>
                     </form>
                 </div>
-            ))}
+                ))
+            )}
         </div>
     );
 };

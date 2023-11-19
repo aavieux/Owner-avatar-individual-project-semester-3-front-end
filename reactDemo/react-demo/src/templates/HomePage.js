@@ -1,7 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import TopNavBarComponent from "./reusable/TopNavBarFrag";
-import LeftNavBarComponent from "./reusable/LeftNavBarFrag";
-import FriendBarComponent from "./reusable/FriendBarFrag";
 import axios from "axios";
 import {RedirectFunctions} from "../js/RedirectFunctions";
 import {useNavigate} from "react-router-dom";

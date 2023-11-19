@@ -12,8 +12,6 @@ import ProfileOverviewComponent from "./templates/ProfileOverview";
 import MyLibraryComponent from "./templates/MyLibrary";
 import BooksFromLibraryComponent from "./templates/BooksFromLibrary";
 import BookOverviewComponent from "./templates/BookOverview";
-import {AuthContext} from "./templates/Authentication/AuthProvider";
-import PrivateRoute from "./templates/Authentication/PrivateRoute";
 import TopNavBarComponent from "./templates/reusable/TopNavBarFrag";
 import LeftNavBarComponent from "./templates/reusable/LeftNavBarFrag";
 import FriendBarComponent from "./templates/reusable/FriendBarFrag";
