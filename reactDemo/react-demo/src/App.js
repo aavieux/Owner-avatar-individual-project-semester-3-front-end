@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ProfileOverviewComponent from "./templates/ProfileOverview";
 import MyLibraryComponent from "./templates/MyLibrary";
 import BooksFromLibraryComponent from "./templates/BooksFromLibrary";
-import BookOverviewComponent from "./templates/BookOverview";
+import BookOverviewComponent from "./templates/book-overview/BookOverview";
 import TopNavBarComponent from "./templates/reusable/TopNavBarFrag";
 import LeftNavBarComponent from "./templates/reusable/LeftNavBarFrag";
 import FriendBarComponent from "./templates/reusable/FriendBarFrag";
@@ -32,7 +32,7 @@ const App = () => {
             <Route path = "/books/:bookId" element={<BookOverviewComponent/>}/>
         </Routes>
         <LeftNavBarComponent/>
-      <FriendBarComponent/>
+        <FriendBarComponent/>
       </Router>
   );
 }

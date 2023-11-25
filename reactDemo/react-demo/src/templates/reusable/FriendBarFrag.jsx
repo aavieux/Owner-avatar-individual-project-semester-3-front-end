@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { RedirectFunctions } from "../../js/RedirectFunctions";
 import {useNavigate} from "react-router-dom";
-import useFetchData from "../custom-hooks/FetchDataHook";
+import FetchData from "../custom-hooks/FetchData";
 
 const FriendBarComponent = () => {
 
     const navigate = useNavigate();
     const redirectFunctions = RedirectFunctions(navigate);
 
-    const {data, error, loading} = useFetchData("GET", "/relationships/allfriends", null, null)
+    const {data: data, error: error, loading: loading} = FetchData("GET", "/relationships/allfriends", null, null)
     // useEffect(() => {
     //     const fetchFriends = () => {
     //         try {

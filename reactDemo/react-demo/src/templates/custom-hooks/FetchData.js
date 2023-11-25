@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useFetchData = (methodType, url, customHeaders, body) => {
+const FetchData = (methodType, url, customHeaders, body) => {
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -65,14 +65,14 @@ const useFetchData = (methodType, url, customHeaders, body) => {
 
                         throw new Error(`Unsupported HTTP method: ${methodType}`);
                 }
-                console.log(response.status);
+
                 if (response.status === 200) {
-                    console.log("response status 200");
                     setData(response.data);
                 } else {
                     setError(`Unexpected response status: ${response.status}`);
                 }
             } catch (error) {
+                console.log("CAUGHT ERROR IN FETCH");
                 if (error.response) {
                     if (error.response.status === 409) {
                         setError(error.response.data);
@@ -93,8 +93,9 @@ const useFetchData = (methodType, url, customHeaders, body) => {
             }
         }
         fetchData();
-    }, [url, authToken]);
+    }, []);
+
     return { data, error, loading };
 };
 
-export default useFetchData;
+export default FetchData;

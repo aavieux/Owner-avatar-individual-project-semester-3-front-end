@@ -15,7 +15,6 @@ const LoginComponent = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-        console.log(formData)
     };
     useEffect(() => {
         const authToken = localStorage.getItem('authToken');
