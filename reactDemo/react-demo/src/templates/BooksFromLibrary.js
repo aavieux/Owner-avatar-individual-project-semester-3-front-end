@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import axios from "axios";
-import {RedirectFunctions} from "../js/RedirectFunctions";
+import ViewButton from "./reusable/components/ViewButton";
+import ReviewButton from "./reusable/components/ReviewButton";
+
 
 const BooksFromLibraryComponent = () => {
     const { libraryId } = useParams();
     const authToken = localStorage.getItem("authToken");
     const [booksList, setBooksList] = useState([]);
-    const navigate = useNavigate();
-    const redirectFunctions = RedirectFunctions(navigate);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -67,10 +68,10 @@ const BooksFromLibraryComponent = () => {
                             <div className="image-holder">
                                 <div className="middle">
                                     <div className="hover-button">
-                                        <img className="image book-hover-button" src="/pictures/icons8-view-48.png" alt="View" onClick={() => redirectFunctions.redirectToBookPage(book.id)}/>
+                                       <ViewButton type={"book"} itemId={book.id}/>
                                     </div>
                                     <div className="hover-button">
-                                        <img className="image book-hover-button" src="/pictures/icons8-star-48.png" alt="Star" />
+                                        <ReviewButton type={"book"}/>
                                     </div>
                                 </div>
                                 <img className="h-inherit w-inherit" src={book.cover_url} alt={`${book.title}'s image`} />

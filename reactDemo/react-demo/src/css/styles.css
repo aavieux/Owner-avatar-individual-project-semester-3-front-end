@@ -681,11 +681,16 @@ div#personal-info-header-txt {
     padding-top: 10px;
 }
 div#settings-field{
-    background-color: green;
     height: 70px;
     position: relative;
     margin-left: auto;
     width: 70px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+img.settings-pic {
+    cursor: pointer;
 }
 div#account-bio-field{
     /*background-color: cyan;*/

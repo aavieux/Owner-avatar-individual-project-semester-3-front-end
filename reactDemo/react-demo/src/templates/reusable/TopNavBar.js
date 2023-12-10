@@ -1,16 +1,13 @@
 import React from 'react';
 import {RedirectFunctions} from "../../js/RedirectFunctions";
 import {closeSettings, openSettings} from "../../js/js";
-import {useNavigate} from "react-router-dom";
-import SearchBar from './components/search-bar/SearchBar';
-
-
-
+import SearchBar from './components/SearchBar';
+import HomePageLogo from "../../pictures/vector-book-blue-icon-original (1).svg";
+import UserAvatar from "../../pictures/icons8-account-48.png";
+import SettingsIcon from "../../pictures/icons8-settings-48.png";
+import LogOutIcon from "../../pictures/icons8-exit-48.png";
 const TopNavBarComponent = () => {
-
-    const navigate = useNavigate();
-    const redirectFunctions = RedirectFunctions(navigate);
-
+    const redirectFunctions = RedirectFunctions();
     return (
         <div>
             <div className="modal-ex333" id="modal-ex333">
@@ -30,7 +27,7 @@ const TopNavBarComponent = () => {
                 <div className="smallBoxTop rightB cursorPointer contentCenter">
                     <img
                         className="cursorPointer"
-                        src="/pictures/vector-book-blue-icon-original%20(1).svg"
+                        src={HomePageLogo}
                         alt="Book Icon"
                         onClick={() =>  redirectFunctions.redirectTo('home')}
                     />
@@ -47,16 +44,16 @@ const TopNavBarComponent = () => {
                         <div className="contentCenter p-l-5px cursorPointer ">
                             <img
                                 className="rotate mirror-image"
-                                src="/pictures/icons8-account-48.png"
-                                alt="User Account"
+                                src={UserAvatar}
+                                alt="User Avatar"
                                 onClick={() =>  redirectFunctions.redirectTo('users/profile')}
                             />
                         </div>
-                        <div className="contentCenter p-l-5px cursorPointer " id="openModal" onClick={() => openSettings()}>
-                            <img className="rotate" src="/pictures/icons8-settings-48.png" alt="Settings"  />
+                        <div className="contentCenter p-l-5px cursorPointer " id="openModal">
+                            <img className="rotate" src={SettingsIcon} alt="Settings Icon" onClick={() => openSettings()}/>
                         </div>
                         <div className="contentCenter p-r-10px cursorPointer">
-                            <img src="/pictures/icons8-exit-48.png" alt="Logout" onClick={() => redirectFunctions.logOut()} />
+                            <img src={LogOutIcon} alt="Logout" onClick={() => redirectFunctions.logOut()} />
                         </div>
                     </div>
                 </div>

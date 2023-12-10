@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // TODO zashto react ne e tuk
 import axios from 'axios';
 
 const FetchData = (methodType, url, customHeaders, body) => {
@@ -16,77 +16,79 @@ const FetchData = (methodType, url, customHeaders, body) => {
         const fetchData = async () => {
             try {
                 let response = null;
-
                 let currentHeaders;
-
                 if (customHeaders == null) {
                     currentHeaders =
                         {
                             Authorization: `Bearer ${authToken}`
                         }
-                } else {
+                }
+                 else {
                     currentHeaders =
                         {
-                        Authorization: `Bearer ${authToken}`,
                         ...customHeaders
                     };
                 }
 
                 switch (methodType.toUpperCase()) {
-
                     case 'GET':
-                        if (customHeaders == null) {
-                            response = await axios.get(fullUrl, {
-                                headers: currentHeaders,
-                                data: body
-                            });
-                            break;
-                        } else {
-                            response = axios.get(fullUrl, {
-                                headers: customHeaders,
-                                data: body
-                            });
-                            break;
-                        }
-
-                    case 'POST':
-                        response = axios.post(fullUrl, {
+                        response = await axios.get(fullUrl, {
                             headers: currentHeaders,
                             data: body
                         });
                         break;
+                    case 'POST':
+                        if (customHeaders === 0){
+                            response = await axios.post(fullUrl, {
+                                token: body
+                            });
+                        }
+                        else{
+                            response = await axios.post(fullUrl, {
+                                headers: currentHeaders,
+                                data: body
+                            });
+                        }
+
+                        // console.log("response :" + response);
+                        // console.log(body);
+                        break;
+
                     case 'DELETE':
-                        response = axios.delete(fullUrl, {
+                        response = await axios.delete(fullUrl, {
                             headers: currentHeaders,
                             data: body // Data for DELETE requests
                         });
                         break;
                     default:
-
                         throw new Error(`Unsupported HTTP method: ${methodType}`);
                 }
 
                 if (response.status === 200) {
                     setData(response.data);
-                } else {
-                    setError(`Unexpected response status: ${response.status}`);
+                }
+                else if (response.status === 403){
+                    setError(`Response status: ${response.status} (accessed api?? not sure)`);
+                }else {
+                    setError(`Unexpected response status: ${response.status} (accessed api)Response body: ${response.data} `);
                 }
             } catch (error) {
-                console.log("CAUGHT ERROR IN FETCH");
                 if (error.response) {
                     if (error.response.status === 409) {
-                        setError(error.response.data);
+                        setError("(Cannot reach the api)" + " " + error);
                     } else if (error.response.status === 204) {
-                        setError(error.response.data);
+                        setError("(Cannot reach the api)" + " " + error);
+                    } else if (error.response.status === 403) {
+                        setError("(Cannot reach the api)" + " " + error);
                     } else if (error.response.status === 404) {
-                        setError(error.response.data);
+                        setError("(Cannot reach the api)" + " " + error);
                     } else if (error.response.status === 401) {
-                        setError(error.response.data);
+                        setError("(Cannot reach the api)" + " " + error);
                     } else {
-                        setError("There was an unexpected error with connecting to the API");
+                        setError("There was an unexpected error with connecting to the API with unknown error.response.status: " + error.response.status );
                     }
                 } else {
-                    setError("An unexpected error occurred");
+                    setError("An unexpected error occurred (Client side)");
                 }
             } finally {
                 setLoading(false);

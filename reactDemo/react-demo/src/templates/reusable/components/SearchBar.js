@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { RedirectFunctions } from "../../../../js/RedirectFunctions";
+import { RedirectFunctions } from "../../../js/RedirectFunctions";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
 
-    const navigate = useNavigate();
-    const redirectFunctions = RedirectFunctions(navigate);
+    const redirectFunctions = RedirectFunctions();
     const authToken = localStorage.getItem("authToken");
 
     const [loading, setLoading] = useState(false);

@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {RedirectFunctions} from "../js/RedirectFunctions";
-import {useNavigate} from "react-router-dom";
-
 
 const LoginComponent = () => {
     const [loading, setLoading] = useState(true);
@@ -10,8 +8,7 @@ const LoginComponent = () => {
         email: '',
         password: '',
     });
-    const navigate = useNavigate();
-    const redirectFunctions = RedirectFunctions(navigate);
+    const redirectFunctions = RedirectFunctions();
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -19,13 +16,12 @@ const LoginComponent = () => {
     useEffect(() => {
         const authToken = localStorage.getItem('authToken');
         if (authToken) {
-
             redirectFunctions.redirectToMyProfile();
         } else {
 
             setLoading(false);
         }
-    }, );
+    },[]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

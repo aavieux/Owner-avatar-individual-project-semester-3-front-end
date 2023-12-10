@@ -1,10 +1,8 @@
 import React from 'react';
 import {RedirectFunctions} from "../../js/RedirectFunctions";
-import {useNavigate} from "react-router-dom";
 
 const LeftNavBarComponent = () => {
-    const navigate = useNavigate();
-    const redirectFunctions = RedirectFunctions(navigate);
+    const redirectFunctions = RedirectFunctions();
 
     return (
         <div className="d-flex flex-column flex-shrink-0 p-2-rem text-white sideNavBarHP">

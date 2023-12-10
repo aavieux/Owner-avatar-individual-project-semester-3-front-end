@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { RedirectFunctions } from "../../js/RedirectFunctions";
-import {useNavigate} from "react-router-dom";
 import FetchData from "../custom-hooks/FetchData";
-
+import FriendAvatar from "../../pictures/icons8-avatar-48.png";
 const FriendBarComponent = () => {
 
-    const navigate = useNavigate();
-    const redirectFunctions = RedirectFunctions(navigate);
+    const redirectFunctions = RedirectFunctions();
 
     const {data: data, error: error, loading: loading} = FetchData("GET", "/relationships/allfriends", null, null)
     // useEffect(() => {
@@ -63,7 +61,7 @@ const FriendBarComponent = () => {
                     <div className="friend-bar-image-holder">
                         <img
                             className="chatImage"
-                            src={'/pictures/icons8-avatar-48.png'}
+                            src={FriendAvatar}
                             alt="User Profile Picture"
                         />
                     </div>

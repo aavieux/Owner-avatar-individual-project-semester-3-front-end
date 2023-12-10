@@ -1,57 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
-import {RedirectFunctions} from "../js/RedirectFunctions";
-import {useNavigate} from "react-router-dom";
-
+import React from 'react';
+import FetchData from "./custom-hooks/FetchData";
+import LibraryIcon from "../pictures/hand-drawn-seamless-pattern-book-doodle-elements-education-concept_253081-84.avif"
+import ViewButton from "./reusable/components/ViewButton";
+import ReviewButton from "./reusable/components/ReviewButton";
 const MyLibraryComponent = () => {
 
-    const authToken = localStorage.getItem("authToken");
-    const [allLibraries, setAllLibraries] = useState([]);
-    const navigate = useNavigate();
-    const redirectFunctions = RedirectFunctions(navigate);
 
-
-    useEffect(() => {
-        const fetchLibraries = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8080/api/libraries/mylibrary`, {
-                    headers: {
-                        Authorization: `Bearer ${authToken}`
-                    }
-                });
-                if (response.status === 200) {
-                    setAllLibraries(response.data);// Log the fetched data
-                }
-                else {
-                    console.error(`Unexpected response status: ${response.status}`);
-                }
-            } catch (error) {
-
-                if (error.response.status === 409){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 204){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 404){
-
-                    console.error(error.response.data);
-                }
-                else if (error.response.status === 401){
-
-                    console.error(error.response.data);
-                }
-                else{
-                    console.error("There was an unexpected error with connecting to the API")
-                }
-            }
-        };
-        fetchLibraries();
-    }, [authToken]); // us
-
-
+    const { data: allLibraries, error: allLibrariesError, loading: allLibrariesLoading } = FetchData("GET", "/libraries/mylibrary", null, null);
 
     return (
         <div>
@@ -61,35 +16,50 @@ const MyLibraryComponent = () => {
                 </div>
 
                 <div className="yourLibrariesField">
-                    {allLibraries.map(library => (
-                        <div className="library-contents w-unset" key={library.id}>
-                            <div className="image-holder">
-                                <div className="middle">
-                                    <div className="hover-button"  onClick={() =>  redirectFunctions.redirectToLibraryOverview(library.id)}>
-                                        <img className="image book-hover-button" src="/pictures/icons8-view-48.png" alt="View" />
-                                    </div>
-                                    <div className="hover-button">
-                                        <img className="image book-hover-button" src="/pictures/icons8-star-48.png" alt="Star" />
-                                    </div>
-                                </div>
-                                <img className="h-inherit" src="/pictures/hand-drawn-seamless-pattern-book-doodle-elements-education-concept_253081-84.avif" alt="Library" />
-                            </div>
-                            <div className="info-holder">
-                                <div className="title-holder">
-                                    <p>{library.title}</p>
-                                </div>
-                            </div>
+                    {allLibrariesError && (
+                        <div className="error-message">
+                            <p>Error: {allLibrariesError.message}</p>
                         </div>
-                    ))}
+                    )}
+
+                    {allLibraries && allLibraries.length === 0 && !allLibrariesLoading && !allLibrariesError && (
+                        <div className="error-message">
+                            <p>No libraries found.</p>
+                        </div>
+                    )}
+
+                    {allLibraries && allLibraries.length > 0 && !allLibrariesLoading && !allLibrariesError && (
+                        allLibraries.map(library => (
+                            <div className="library-contents w-unset" key={library.id}>
+                                <div className="image-holder">
+                                    <div className="middle">
+                                        <div className="hover-button">
+                                            <ViewButton type={"library"} itemId={library.id}/>
+                                        </div>
+                                        <div className="hover-button">
+                                            <ReviewButton type={"library"}/>
+                                        </div>
+                                    </div>
+                                    <img className="h-inherit" src={LibraryIcon} alt="Library" />
+                                </div>
+                                <div className="info-holder">
+                                    <div className="title-holder">
+                                        <p>{library.title}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    )}
                 </div>
 
                 <div className="rForYou">
                     <p className="rForYoutxt">Recommended for you</p>
                 </div>
-                <div className="rForYouField">{/* Recommended books go here */}</div>
+                <div className="rForYouField"></div>
             </div>
         </div>
     );
+
 };
 
 export default MyLibraryComponent;

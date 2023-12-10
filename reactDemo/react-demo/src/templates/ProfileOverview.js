@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import axios from "axios";
+import DefaultUserIcon from "../pictures/bubble-gum-avatar-icon.png";
 
 const ProfileOverviewComponent = () => {
 
@@ -19,6 +20,9 @@ const ProfileOverviewComponent = () => {
                 setProfile(response.data);
               if (response.status === 200) {
                   setProfile(response.data);// Log the fetched data
+              }
+              else if (response.status === 300){
+                  console.error(`Response status: ${response.status}`);
               }
               else {
                   console.error(`Unexpected response status: ${response.status}`);
@@ -60,7 +64,7 @@ const ProfileOverviewComponent = () => {
                                 <div id="account-image">
                                     <img
                                         className="profile-pic"
-                                        src={profile.profile_pic_url ? profile.profile_pic_url : '/pictures/bubble-gum-avatar-icon.png'}
+                                        src={profile.profile_pic_url ? profile.profile_pic_url : DefaultUserIcon}
                                         alt="User Profile Picture"
                                     />
                                 </div>
