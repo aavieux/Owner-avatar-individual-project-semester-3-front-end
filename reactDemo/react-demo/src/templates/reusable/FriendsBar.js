@@ -56,13 +56,17 @@ const FriendBarComponent = () => {
                 </div>
             ) : (
                 data.map((friend) => (
-                    <div className="friend-bar" key={friend.id}>
-                    <div className="chat-overlay"></div>
-                    <div className="friend-bar-image-holder">
+
+                <div className="friend-bar" key={friend.id} onClick={() => redirectFunctions.redirectToProfileOverview(friend.id)/* Handle click for other type */} >
+                    <div className="chat-overlay" >
+
+                    </div>
+                    <div className="friend-bar-image-holder" >
                         <img
                             className="chatImage"
                             src={FriendAvatar}
                             alt="User Profile Picture"
+
                         />
                     </div>
                     <div className="friend-bar-contents">
@@ -73,13 +77,6 @@ const FriendBarComponent = () => {
                             <p>User status</p>
                         </div>
                     </div>
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        redirectFunctions.redirectToProfileOverview(friend.id);
-                    }}>
-                        <input type="hidden" name="userId" value={friend.id} />
-                        <button type="submit">Go to User</button>
-                    </form>
                 </div>
                 ))
             )}

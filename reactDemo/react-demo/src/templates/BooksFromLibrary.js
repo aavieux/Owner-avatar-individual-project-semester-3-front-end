@@ -4,12 +4,10 @@ import axios from "axios";
 import ViewButton from "./reusable/components/ViewButton";
 import ReviewButton from "./reusable/components/ReviewButton";
 
-
 const BooksFromLibraryComponent = () => {
     const { libraryId } = useParams();
     const authToken = localStorage.getItem("authToken");
     const [booksList, setBooksList] = useState([]);
-
 
     useEffect(() => {
         const fetchData = async () => {

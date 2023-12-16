@@ -46,7 +46,7 @@ const TopNavBarComponent = () => {
                                 className="rotate mirror-image"
                                 src={UserAvatar}
                                 alt="User Avatar"
-                                onClick={() =>  redirectFunctions.redirectTo('users/profile')}
+                                onClick={() => redirectFunctions.redirectTo('users/profile')}
                             />
                         </div>
                         <div className="contentCenter p-l-5px cursorPointer " id="openModal">

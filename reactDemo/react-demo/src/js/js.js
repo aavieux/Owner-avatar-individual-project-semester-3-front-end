@@ -2,9 +2,6 @@
 // const closeCreateBookBtn = document.getElementById("closeModal");
 // const modalInner = document.getElementById("modal-inner")
 //
-
-import {useNavigate} from "react-router-dom";
-
 export function openSettings(){
     const modalex333 = document.getElementById("modal-ex333");
     modalex333.classList.add("open");
@@ -47,11 +44,6 @@ export function closeAddLibraryMenu(){
 //     localStorage.removeItem('authToken');
 //     redirectTo("login")
 // }
-
-
-
-
-
 
 //     function redirectToHomePage() {
 //     window.location.href = '/';

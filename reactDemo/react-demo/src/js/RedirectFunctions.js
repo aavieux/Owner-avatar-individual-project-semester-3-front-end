@@ -7,12 +7,15 @@ export function RedirectFunctions() {
         redirectToLibraryOverview: (libraryId) =>
             navigate(`/libraries/mylibrary/${libraryId}`),
         redirectToBookPage: (bookId) => navigate(`/books/${bookId}`),
-        redirectToProfileOverview: (userId) => navigate(`/users/${userId}`),
+        redirectToProfileOverview: (userId) => {
+            navigate(`/users/${userId}`);
+            console.log("vliza")
+
+        },
         redirectToMyProfile: () => {
             navigate(`/users/profile`);
             window.location.reload();
-        }
-        ,
+        },
         logOut: () => {
             localStorage.removeItem('authToken');
             navigate("/login");

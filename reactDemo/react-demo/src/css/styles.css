@@ -647,8 +647,6 @@ div#account-image-settings{
     width: 100%;
     flex-direction: column;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 div#account-image{
     /*background-color: black;*/
@@ -705,6 +703,8 @@ div#account-bio-txt{
     color: #939393;
     font-style: italic;
     padding-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 div#account-stats-field{
