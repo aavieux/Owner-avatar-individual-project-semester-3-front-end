@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, act } from '@testing-library/react';
-import FetchData from './FetchData'; // Adjust the import path based on your project structure
+import FetchData from '../templates/custom-hooks/FetchData'; // Adjust the import path based on your project structure
 import axios from 'axios';
 
 // Mock the axios module to control its behavior during testing

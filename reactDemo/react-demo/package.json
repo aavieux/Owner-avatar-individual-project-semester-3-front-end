@@ -1,10 +1,17 @@
 {
   "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.7",
+    "@babel/plugin-syntax-jsx": "^7.23.3",
+    "@babel/preset-env": "^7.23.8",
     "@babel/preset-react": "^7.23.3",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2",
     "jest": "^29.7.0"
   },
   "name": "owner-avatar-individual-project-semester-3-front-end",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "dependencies": {
     "5": "^0.0.1",
@@ -203,7 +210,9 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",
