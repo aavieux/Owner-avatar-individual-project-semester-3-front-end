@@ -1,5 +1,5 @@
 import React from 'react';
-import StarIcon from "../../../pictures/icons8-star-48.png"
+import StarIcon from "../../../pictures/icons8-star-48.png";
 const ReviewButton = ({type, itemId}) => {
 
     if (type.toLowerCase() === "library") {
